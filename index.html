@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -63,13 +63,17 @@ h1 .hl{background:var(--y);color:var(--k);padding:0 .14em;display:inline-block;t
 .hd .mk{display:inline-block;transform:rotate(-2deg);margin-top:8px}
 /* serviços */
 #lista{list-style:none;border-top:2px solid var(--ink)}
-#lista li{display:grid;grid-template-columns:70px 1.1fr 2fr;gap:18px;align-items:center;padding:22px 14px;border-bottom:1px solid #3a3a3a;transition:background .2s,color .2s,padding .2s}
-#lista li:hover{background:var(--y);color:var(--k);padding-left:26px}
+#lista li{border-bottom:1px solid #3a3a3a}
+#lista a{display:grid;grid-template-columns:70px 1.1fr 2fr auto;gap:18px;align-items:center;padding:22px 14px;color:inherit;text-decoration:none;transition:background .2s,color .2s,padding .2s}
+#lista a:hover{background:var(--y);color:var(--k);padding-left:26px}
+#lista a:focus-visible{outline:3px solid var(--y);outline-offset:-3px}
+#lista .go{font:600 .85rem Barlow,sans-serif;text-transform:uppercase;letter-spacing:.5px;color:var(--y);white-space:nowrap;transition:transform .2s,color .2s}
+#lista a:hover .go{color:var(--k);transform:translateX(5px)}
 #lista .n{font:400 2rem Anton,sans-serif;color:var(--y);transition:color .2s}
-#lista li:hover .n{color:var(--k)}
+#lista a:hover .n{color:var(--k)}
 #lista h3{font-size:1.9rem}
 #lista p{color:var(--mut);transition:color .2s}
-#lista li:hover p{color:var(--k)}
+#lista a:hover p{color:var(--k)}
 #lista img{width:70px;height:70px;object-fit:cover;border:2px solid var(--k)}
 /* como funciona */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
@@ -107,8 +111,8 @@ nav li{padding:14px 22px;border-top:1px solid #333}
 nav li .btn{display:block;text-align:center}
 .hero,#sobre .wrap,.ct{grid-template-columns:1fr}
 .steps{grid-template-columns:1fr}
-#lista li{grid-template-columns:50px 1fr}
-#lista p{grid-column:2}
+#lista a{grid-template-columns:50px 1fr}
+#lista p,#lista .go{grid-column:2}
 .tag{justify-self:start;margin-top:10px}
 section{padding:64px 0}
 }
@@ -151,7 +155,7 @@ section{padding:64px 0}
 
 <section id="servicos">
   <div class="wrap">
-    <div class="hd rv"><h2>O que eu conserto</h2><span class="mk">não achou o seu? chama que eu vejo</span></div>
+    <div class="hd rv"><h2>O que eu conserto</h2><span class="mk">clique no seu aparelho e a conversa já abre no WhatsApp</span></div>
     <ol id="lista"></ol>
   </div>
 </section>
@@ -222,7 +226,7 @@ $("#yr").textContent=new Date().getFullYear();
 
 // lista de serviços + opções do formulário
 SERVICOS.forEach((s,i)=>{
-  $("#lista").insertAdjacentHTML("beforeend",`<li class="rv"><span class="n">${s.f?`<img src="${s.f}" alt="${s.n}">`:String(i+1).padStart(2,"0")}</span><h3>${s.n}</h3><p>${s.d}</p></li>`);
+  $("#lista").insertAdjacentHTML("beforeend",`<li class="rv"><a href="${zap("Olá Leonardo! Vim pelo site e quero um orçamento para: "+s.n+".")}" target="_blank" rel="noopener" aria-label="Pedir orçamento de ${s.n} no WhatsApp"><span class="n">${s.f?`<img src="${s.f}" alt="${s.n}">`:String(i+1).padStart(2,"0")}</span><h3>${s.n}</h3><p>${s.d}</p><span class="go">Chamar →</span></a></li>`);
   $("#ap").insertAdjacentHTML("beforeend",`<option>${s.n}</option>`);
 });
 $("#ap").insertAdjacentHTML("beforeend","<option>Outro</option>");
