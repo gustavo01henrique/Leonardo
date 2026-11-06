@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Leonardo Farias | Assistência Técnica em São Luís</title>
 <meta name="description" content="Conserto de celular, iPhone, tablet, notebook, computador, PS4, PS5, drone e hoverboard no Monumental Shopping, Renascença.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600&family=Permanent+Marker&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600&family=Barlow+Condensed:wght@600&family=Permanent+Marker&display=swap">
 <style>
 :root{--bg:#121212;--bg2:#1b1b1b;--ink:#f4efe2;--mut:#b5ae9b;--y:#f9d342;--k:#121212;color-scheme:dark;box-sizing:border-box}
 *,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
@@ -35,9 +35,15 @@ nav ul a:not(.btn):hover{color:var(--y)}
 nav .btn{padding:8px 16px;box-shadow:3px 3px 0 var(--ink);font-size:.85rem}
 .bg{display:none;background:none;border:2px solid var(--y);color:var(--y);font-size:1.4rem;width:44px;height:40px;cursor:pointer}
 /* hero */
-#inicio{padding:140px 0 70px}
-.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
-.kick{font-size:1.15rem;transform:rotate(-2deg);display:inline-block;margin-bottom:10px}
+#inicio{padding:140px 0 70px;position:relative;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(85px);pointer-events:none;transition:translate .8s ease-out}
+.b1{width:min(540px,75vw);height:min(540px,75vw);background:var(--y);opacity:.3;top:-140px;right:-100px;translate:calc(var(--mx,0)*-45px) calc(var(--my,0)*-45px);animation:d1 15s ease-in-out infinite alternate}
+.b2{width:min(440px,65vw);height:min(440px,65vw);background:#ff8a00;opacity:.22;bottom:-120px;left:-110px;translate:calc(var(--mx,0)*55px) calc(var(--my,0)*55px);animation:d2 19s ease-in-out infinite alternate}
+@keyframes d1{to{transform:translate(-130px,170px) scale(1.18)}}
+@keyframes d2{to{transform:translate(190px,-100px) scale(1.22)}}
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center;position:relative;z-index:1}
+.kick{font:600 1.25rem/1.2 'Barlow Condensed',Barlow,sans-serif;text-transform:uppercase;letter-spacing:3px;color:var(--y);display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.kick::before{content:"";width:34px;height:3px;background:var(--y)}
 h1{font-size:clamp(3.4rem,10vw,7rem)}
 h1 .hl{background:var(--y);color:var(--k);padding:0 .14em;display:inline-block;transform:rotate(-1.5deg);margin-top:6px}
 .hero p{max-width:520px;margin:24px 0 30px;color:var(--mut);font-size:1.15rem}
@@ -136,9 +142,10 @@ section{padding:64px 0}
 </nav>
 
 <section id="inicio">
+  <div class="blob b1"></div><div class="blob b2"></div>
   <div class="wrap hero">
     <div>
-      <span class="mk kick">Monumental Shopping · Renascença</span>
+      <span class="kick">Monumental Shopping · Renascença</span>
       <h1>Quebrou?<br><span class="hl">Deixa comigo.</span></h1>
       <p>Celular, notebook, videogame, drone... Eu olho o defeito, te falo o valor antes de mexer e só conserto se você topar.</p>
       <a class="btn zapl" target="_blank" rel="noopener">Chamar no WhatsApp</a><a class="lnk" href="#servicos">Ver o que eu conserto</a>
@@ -234,6 +241,14 @@ $("#ap").insertAdjacentHTML("beforeend","<option>Outro</option>");
 // faixa que corre (texto duplicado para o loop não ter emenda)
 const fx=SERVICOS.map(s=>`<span>${s.n} ◆</span>`).join("");
 $("#mq").innerHTML=fx+fx;
+
+// as duas luzes do início acompanham o mouse de leve
+const hero=$("#inicio");
+hero.addEventListener("pointermove",e=>{
+  const r=hero.getBoundingClientRect();
+  hero.style.setProperty("--mx",((e.clientX-r.left)/r.width-.5)*2);
+  hero.style.setProperty("--my",((e.clientY-r.top)/r.height-.5)*2);
+});
 
 // menu do celular
 const menu=$("#menu");
