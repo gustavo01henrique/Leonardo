@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Leonardo Farias | Assistência Técnica</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;600&display=swap">
+<style>
+:root{--bg:#0a0a0a;--card:#141414;--y:#ffc400;--y2:#ff9d00;--txt:#f2f2f2;--mut:#a3a3a3;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit;margin:0;padding:0}
+html{scroll-padding-top:80px}
+body{background:var(--bg);color:var(--txt);font-family:Poppins,system-ui,sans-serif;overflow-x:hidden;line-height:1.6}
+h1,h2,h3{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:1px;font-weight:400}
+.grad{background:linear-gradient(90deg,var(--y),var(--y2));-webkit-background-clip:text;background-clip:text;color:transparent}
+section{padding:90px 6%;position:relative}
+h2{font-size:clamp(2.2rem,5vw,3.4rem);text-align:center;margin-bottom:10px}
+.sub{text-align:center;color:var(--mut);margin-bottom:46px}
+/* NAVBAR */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:12px 6%;padding-top:calc(12px + env(safe-area-inset-top,0px));background:rgba(10,10,10,.75);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,196,0,.25);transition:.3s}
+nav.s{box-shadow:0 4px 30px rgba(255,196,0,.15)}
+.logo{display:flex;align-items:center;gap:10px;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.5rem;color:var(--y);text-decoration:none}
+.logo-svg{width:48px;height:40px;color:var(--y);filter:drop-shadow(0 0 6px rgba(255,196,0,.7));transition:.4s}
+.logo:hover .logo-svg{transform:rotate(-8deg) scale(1.1)}
+.wm{position:absolute;right:-6%;top:52%;width:min(62vw,640px);transform:translateY(-50%);color:var(--y);opacity:.07;pointer-events:none;filter:drop-shadow(0 0 30px #ffc400);animation:fl 7s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-54%) rotate(3deg)}}
+.loc{max-width:560px;margin:0 auto 24px;padding:20px 24px;border-radius:18px;background:rgba(255,196,0,.06);border:1px solid rgba(255,196,0,.35);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.loc .pin{font-size:2rem}
+.loc div{flex:1;min-width:200px}
+.loc b{color:var(--y);display:block}
+.loc small{color:var(--mut)}
+.loc .btn{padding:10px 20px;font-size:.9rem}
+nav ul{display:flex;gap:28px;list-style:none}
+nav a.l{color:var(--txt);text-decoration:none;font-size:.95rem;position:relative}
+nav a.l::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--y);transition:.3s}
+nav a.l:hover::after{width:100%}
+.burger{display:none;background:none;border:0;color:var(--y);font-size:2rem;cursor:pointer}
+/* BOTÕES */
+.btn{display:inline-block;padding:14px 30px;border-radius:50px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font-size:1rem;font-family:inherit;transition:.3s}
+.btn.p{background:linear-gradient(90deg,var(--y),var(--y2));color:#000;box-shadow:0 0 22px rgba(255,196,0,.5)}
+.btn.p:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 0 40px rgba(255,196,0,.85)}
+.btn.o{border:2px solid var(--y);color:var(--y);background:transparent}
+.btn.o:hover{background:var(--y);color:#000}
+/* HERO */
+#inicio{min-height:100vh;display:flex;align-items:center;padding-top:110px;background:radial-gradient(circle at 80% 20%,rgba(255,196,0,.18),transparent 45%),radial-gradient(circle at 10% 90%,rgba(255,157,0,.12),transparent 40%),var(--bg);overflow:hidden}
+#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hero{position:relative;max-width:760px}
+.tag{display:inline-block;padding:6px 16px;border:1px solid var(--y);border-radius:30px;color:var(--y);font-size:.85rem;margin-bottom:18px;box-shadow:0 0 14px rgba(255,196,0,.3)}
+h1{font-size:clamp(3rem,9vw,6.2rem);line-height:1}
+h1 .grad{text-shadow:0 0 40px rgba(255,196,0,.35)}
+.type{font-size:1.4rem;margin:18px 0;min-height:2em}
+.type b{color:var(--y)}
+.cur{display:inline-block;width:2px;height:1.1em;background:var(--y);vertical-align:middle;margin-left:3px;animation:bl 1s infinite}
+@keyframes bl{50%{opacity:0}}
+.hero p.d{color:var(--mut);max-width:560px;margin-bottom:28px}
+.cta{display:flex;gap:14px;flex-wrap:wrap}
+.stats{display:flex;gap:34px;margin-top:46px;flex-wrap:wrap}
+.stats div{text-align:left}
+.stats strong{font-family:'Bebas Neue',Impact,sans-serif;font-size:2.6rem;color:var(--y);display:block;line-height:1}
+.stats span{color:var(--mut);font-size:.85rem}
+/* SERVIÇOS */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;max-width:1150px;margin:0 auto}
+.card{position:relative;background:var(--card);border:1px solid #262626;border-radius:20px;overflow:hidden;transition:transform .2s,border-color .3s,box-shadow .3s;--mx:50%;--my:50%}
+.card::before{content:'';position:absolute;inset:0;background:radial-gradient(260px circle at var(--mx) var(--my),rgba(255,196,0,.22),transparent 60%);opacity:0;transition:.3s;pointer-events:none}
+.card:hover{border-color:var(--y);box-shadow:0 0 30px rgba(255,196,0,.25)}
+.card:hover::before{opacity:1}
+.ph{height:150px;display:grid;place-items:center;font-size:4.2rem;background:linear-gradient(135deg,#1c1c1c,#2a2200 60%,#4a3800);position:relative}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card .in{padding:20px 22px 24px}
+.card h3{font-size:1.7rem;color:var(--y)}
+.card p{color:var(--mut);font-size:.9rem}
+/* SOBRE */
+.about{background:linear-gradient(180deg,var(--bg),#15110a,var(--bg))}
+.feat{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;max-width:1000px;margin:0 auto}
+.feat div{text-align:center;padding:26px 16px;border-radius:16px;background:rgba(255,196,0,.05);border:1px solid rgba(255,196,0,.2)}
+.feat span{font-size:2.2rem;display:block}
+.feat b{display:block;color:var(--y);margin:6px 0 2px}
+.feat small{color:var(--mut)}
+/* CONTATO */
+.box{max-width:560px;margin:0 auto;background:var(--card);padding:34px;border-radius:22px;border:1px solid var(--y);box-shadow:0 0 40px rgba(255,196,0,.2)}
+label{display:block;font-size:.85rem;color:var(--mut);margin:14px 0 6px}
+input,select,textarea{width:100%;padding:13px 15px;border-radius:12px;border:1px solid #333;background:#0d0d0d;color:var(--txt);font:inherit}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--y);box-shadow:0 0 12px rgba(255,196,0,.4)}
+.box .btn{width:100%;margin-top:22px}
+footer{text-align:center;padding:30px 6%;color:var(--mut);border-top:1px solid #1f1f1f;font-size:.85rem}
+.wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;font-size:1.8rem;text-decoration:none;z-index:40;box-shadow:0 0 0 0 rgba(37,211,102,.7);animation:pu 2s infinite}
+@keyframes pu{70%{box-shadow:0 0 0 18px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.rv{opacity:0;transform:translateY(40px);transition:opacity .8s,transform .8s}
+.rv.on{opacity:1;transform:none}
+@media(max-width:760px){
+.burger{display:block}
+nav ul{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:rgba(10,10,10,.97);max-height:0;overflow:hidden;transition:max-height .4s}
+nav ul.open{max-height:300px;border-bottom:1px solid var(--y)}
+nav ul li{padding:14px 6%;border-top:1px solid #1f1f1f}
+section{padding:70px 6%}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="lg" viewBox="0 0 2100 1730"><g fill="none" stroke="currentColor" stroke-width="104"><circle cx="1043" cy="450" r="297"/><circle cx="410" cy="1110" r="305"/><circle cx="1670" cy="1110" r="305"/><path d="M1325 685L1545 890"/></g><g fill="currentColor"><rect x="980" y="760" width="130" height="680"/><rect x="700" y="1045" width="680" height="130"/><rect x="870" y="1400" width="355" height="240" rx="28"/></g></symbol></svg>
+<nav id="nav">
+  <a href="#inicio" class="logo"><svg class="logo-svg" viewBox="0 0 2100 1730" role="img" aria-label="Logo Leonardo Farias"><use href="#lg"/></svg>LEONARDO FARIAS</a>
+  <button class="burger" id="bg" aria-label="Abrir menu">☰</button>
+  <ul id="menu">
+    <li><a class="l" href="#inicio">Início</a></li>
+    <li><a class="l" href="#servicos">Serviços</a></li>
+    <li><a class="l" href="#sobre">Por que eu?</a></li>
+    <li><a class="l" href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<section id="inicio">
+  <canvas id="fx"></canvas>
+  <svg class="wm" viewBox="0 0 2100 1730" aria-hidden="true"><use href="#lg"/></svg>
+  <div class="hero">
+    <span class="tag">⚡ Assistência técnica rápida e de confiança</span>
+    <h1>Seu aparelho <span class="grad">de volta à vida</span></h1>
+    <div class="type">Conserto de <b id="tp"></b><span class="cur"></span></div>
+    <p class="d">Diagnóstico honesto, peças de qualidade e garantia no serviço. Fale com o Leonardo e receba seu orçamento sem compromisso.</p>
+    <div class="cta">
+      <a href="#contato" class="btn p">Pedir orçamento</a>
+      <a href="#servicos" class="btn o">Ver serviços</a>
+    </div>
+    <div class="stats">
+      <div><strong data-n="500">0</strong><span>Aparelhos consertados</span></div>
+      <div><strong data-n="98">0</strong><span>% clientes satisfeitos</span></div>
+      <div><strong data-n="90">0</strong><span>Dias de garantia</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos">
+  <h2 class="rv">Serviços <span class="grad">disponíveis</span></h2>
+  <p class="sub rv">Se não está na lista, chama no WhatsApp que a gente avalia!</p>
+  <div class="grid" id="gr"></div>
+</section>
+
+<section id="sobre" class="about">
+  <h2 class="rv">Por que escolher o <span class="grad">Leonardo?</span></h2>
+  <p class="sub rv">Atendimento direto, sem enrolação.</p>
+  <div class="feat rv">
+    <div><span>⏱️</span><b>Rapidez</b><small>Muitos reparos no mesmo dia</small></div>
+    <div><span>🛡️</span><b>Garantia</b><small>Segurança no serviço feito</small></div>
+    <div><span>💰</span><b>Preço justo</b><small>Orçamento claro, sem surpresa</small></div>
+    <div><span>🔧</span><b>Peças boas</b><small>Qualidade que dura</small></div>
+  </div>
+</section>
+
+<section id="contato">
+  <h2 class="rv">Peça seu <span class="grad">orçamento</span></h2>
+  <p class="sub rv">Preencha e a mensagem vai direto para o WhatsApp.</p>
+  <div class="loc rv">
+    <span class="pin">📍</span>
+    <div><b>Nosso escritório</b><small>Monumental Shopping, Renascença, São Luís - MA<br>1º andar, sala 142</small></div>
+    <a class="btn o" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Monumental+Shopping+Renascen%C3%A7a+S%C3%A3o+Lu%C3%ADs">Como chegar</a>
+  </div>
+  <div class="box rv">
+    <label for="nm">Seu nome</label>
+    <input id="nm" placeholder="Ex.: Maria">
+    <label for="ap">Aparelho</label>
+    <select id="ap"></select>
+    <label for="pb">Qual o problema?</label>
+    <textarea id="pb" rows="4" placeholder="Ex.: tela quebrada, não liga..."></textarea>
+    <button class="btn p" id="send">Enviar no WhatsApp 💬</button>
+  </div>
+</section>
+
+<footer>© <span id="yr"></span> Leonardo Farias — Assistência Técnica. Todos os direitos reservados.<br>📍 Monumental Shopping, Renascença — 1º andar, sala 142</footer>
+<a class="wa" id="wa" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script>
+// ===== CONFIGURAÇÕES (edite aqui) =====
+const WHATS = "5598985258740"; // DDI + DDD + número, só dígitos (número de teste)
+const SERVICOS = [
+  {n:"Celulares",i:"📱",d:"Tela, bateria, conector de carga, câmera e software.",f:""},
+  {n:"iPhone",i:"🍎",d:"Troca de tela, bateria, Face ID e reparo em placa.",f:""},
+  {n:"Tablets",i:"📲",d:"Touch, display, carregamento e lentidão.",f:""},
+  {n:"Notebooks",i:"💻",d:"Formatação, upgrade SSD/RAM, tela, teclado e limpeza.",f:""},
+  {n:"Computadores",i:"🖥️",d:"Montagem, manutenção, troca de peças e otimização.",f:""},
+  {n:"PS4 e PS5",i:"🎮",d:"Limpeza, pasta térmica, HDMI e superaquecimento.",f:""},
+  {n:"Drones",i:"🚁",d:"Hélices, motores, gimbal, bateria e calibragem.",f:""},
+  {n:"Hoverboard",i:"🛹",d:"Bateria, placa, motor e sensores de equilíbrio.",f:""}
+];
+const TEXTOS = ["celulares","iPhone","notebooks","PS5","drones","hoverboards","computadores"];
+// ======================================
+const $=s=>document.querySelector(s);
+$("#yr").textContent=new Date().getFullYear();
+$("#wa").href="https://wa.me/"+WHATS+"?text="+encodeURIComponent("Olá Leonardo! Vim pelo site e gostaria de um orçamento.");
+
+// Cards de serviços (f = foto em data URI ou arquivo; vazio usa o emoji)
+const gr=$("#gr"),ap=$("#ap");
+SERVICOS.forEach(s=>{
+  gr.insertAdjacentHTML("beforeend",`<div class="card rv"><div class="ph">${s.f?`<img src="${s.f}" alt="${s.n}">`:s.i}</div><div class="in"><h3>${s.n}</h3><p>${s.d}</p></div></div>`);
+  ap.insertAdjacentHTML("beforeend",`<option>${s.n}</option>`);
+});
+ap.insertAdjacentHTML("beforeend","<option>Outro</option>");
+
+// Navbar: sombra ao rolar + menu mobile
+const nav=$("#nav"),menu=$("#menu");
+addEventListener("scroll",()=>nav.classList.toggle("s",scrollY>20),{passive:true});
+$("#bg").onclick=()=>menu.classList.toggle("open");
+menu.querySelectorAll("a").forEach(a=>a.onclick=()=>menu.classList.remove("open"));
+
+// Texto digitando
+let ti=0,ci=0,del=false;
+(function tick(){
+  const w=TEXTOS[ti];
+  ci+=del?-1:1;
+  $("#tp").textContent=w.slice(0,ci);
+  let t=del?50:110;
+  if(!del&&ci===w.length){del=true;t=1400}
+  else if(del&&ci===0){del=false;ti=(ti+1)%TEXTOS.length;t=300}
+  setTimeout(tick,t);
+})();
+
+// Aparecer ao rolar + contadores
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add("on");io.unobserve(e.target)}
+}),{threshold:.15});
+document.querySelectorAll(".rv").forEach(el=>io.observe(el));
+document.querySelectorAll("[data-n]").forEach(el=>{
+  const max=+el.dataset.n;let v=0;
+  const st=setInterval(()=>{v+=Math.ceil(max/60);if(v>=max){v=max;clearInterval(st)}el.textContent=v+(max>=500?"+":"")},30);
+});
+
+// Brilho que segue o mouse nos cards
+document.querySelectorAll(".card").forEach(c=>{
+  c.addEventListener("mousemove",e=>{
+    const r=c.getBoundingClientRect();
+    c.style.setProperty("--mx",e.clientX-r.left+"px");
+    c.style.setProperty("--my",e.clientY-r.top+"px");
+    const x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    c.style.transform=`perspective(700px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-4px)`;
+  });
+  c.addEventListener("mouseleave",()=>c.style.transform="");
+});
+
+// Partículas amarelas no fundo
+const cv=$("#fx"),cx=cv.getContext("2d");let ps=[];
+function rs(){cv.width=cv.offsetWidth;cv.height=cv.offsetHeight;ps=Array.from({length:Math.min(60,cv.width/18)},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,r:Math.random()*2+.5,v:Math.random()*.5+.15}))}
+rs();addEventListener("resize",rs);
+(function dr(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  ps.forEach(p=>{p.y-=p.v;if(p.y<0){p.y=cv.height;p.x=Math.random()*cv.width}
+    cx.beginPath();cx.arc(p.x,p.y,p.r,0,7);cx.fillStyle="rgba(255,196,0,.6)";cx.shadowColor="#ffc400";cx.shadowBlur=10;cx.fill()});
+  requestAnimationFrame(dr);
+})();
+
+// Rolagem suave com easing (começa devagar, acelera, termina devagar)
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+function goTo(y){
+  if(matchMedia("(prefers-reduced-motion:reduce)").matches){scrollTo(0,y);return}
+  const y0=scrollY,dist=y-y0,dur=Math.min(1200,500+Math.abs(dist)*.25),t0=performance.now();
+  (function step(now){
+    const p=Math.min((now-t0)/dur,1);
+    scrollTo(0,y0+dist*ease(p));
+    if(p<1)requestAnimationFrame(step);
+  })(t0);
+}
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener("click",e=>{
+  const id=a.getAttribute("href"),el=id.length>1&&document.querySelector(id);
+  if(!el)return;
+  e.preventDefault();
+  goTo(id==="#inicio"?0:el.getBoundingClientRect().top+scrollY-70);
+}));
+
+// Enviar para o WhatsApp
+$("#send").onclick=()=>{
+  const n=$("#nm").value.trim()||"cliente";
+  const m=`Olá Leonardo! Me chamo ${n}.\nAparelho: ${ap.value}\nProblema: ${$("#pb").value.trim()||"(a descrever)"}`;
+  window.open("https://wa.me/"+WHATS+"?text="+encodeURIComponent(m),"_blank");
+};
+</script>
+</body>
+</html>
